@@ -1,0 +1,6 @@
+{
+  "name": "Jacob Glathe & Team — High-End Engineering",
+  "description": "Offizielle Portfolio- und Showroom-Plattform von Jacob Glathe & Team für Embedded Systems, ESP32 Hardware-Sicherheit, Linux Server Architektur und High-End Webtechnologien.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

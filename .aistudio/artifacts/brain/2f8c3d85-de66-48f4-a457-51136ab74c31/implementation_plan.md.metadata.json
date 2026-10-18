@@ -1,0 +1,6 @@
+{
+  "summary": "Architektur- und Migrationsplan für die Transformation der Plattform in ein reines, natives SwiftUI-Projekt für Xcode (Universal für iOS, iPadOS und macOS). Umfasst native Swift-Modelle, SwiftUI Bento-Cards, SF Pro Typografie, native Sheets, lokale Offline-Assets und Xcode-Projektdateien.",
+  "updatedAt": "2026-10-18T20:10:43.402763490Z",
+  "requestFeedback": true,
+  "userFacing": true
+}

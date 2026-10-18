@@ -1,0 +1,366 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D60589B0D05DD56006BFB54 /* JacobGlatheApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D60589A0D05DD56006BFB54 /* JacobGlatheApp.swift */; };
+		1D60589C0D05DD56006BFB54 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6058810D05DD56006BFB54 /* ContentView.swift */; };
+		1D60589D0D05DD56006BFB54 /* AppLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6058820D05DD56006BFB54 /* AppLanguage.swift */; };
+		1D60589E0D05DD56006BFB54 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6058830D05DD56006BFB54 /* Project.swift */; };
+		1D60589F0D05DD56006BFB54 /* TeamMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6058840D05DD56006BFB54 /* TeamMember.swift */; };
+		1D6058A00D05DD56006BFB54 /* LocalProjectsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6058850D05DD56006BFB54 /* LocalProjectsData.swift */; };
+		1D6058A10D05DD56006BFB54 /* LocalContentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6058860D05DD56006BFB54 /* LocalContentData.swift */; };
+		1D6058A20D05DD56006BFB54 /* LocalTeamData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6058870D05DD56006BFB54 /* LocalTeamData.swift */; };
+		1D6058A30D05DD56006BFB54 /* NavbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6058880D05DD56006BFB54 /* NavbarView.swift */; };
+		1D6058A40D05DD56006BFB54 /* BentoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6058890D05DD56006BFB54 /* BentoCardView.swift */; };
+		1D6058A50D05DD56006BFB54 /* ProjectDetailSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D60588A0D05DD56006BFB54 /* ProjectDetailSheet.swift */; };
+		1D6058A60D05DD56006BFB54 /* HeroSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D60588B0D05DD56006BFB54 /* HeroSectionView.swift */; };
+		1D6058A70D05DD56006BFB54 /* BentoGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D60588C0D05DD56006BFB54 /* BentoGridView.swift */; };
+		1D6058A80D05DD56006BFB54 /* PhilosophyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D60588D0D05DD56006BFB54 /* PhilosophyView.swift */; };
+		1D6058A90D05DD56006BFB54 /* TeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D60588E0D05DD56006BFB54 /* TeamView.swift */; };
+		1D6058AA0D05DD56006BFB54 /* ContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D60588F0D05DD56006BFB54 /* ContactView.swift */; };
+		1D6058AB0D05DD56006BFB54 /* LiveSyncView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6058900D05DD56006BFB54 /* LiveSyncView.swift */; };
+		1D6058AC0D05DD56006BFB54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D6058910D05DD56006BFB54 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D6058940D05DD56006BFB54 /* JacobGlatheApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JacobGlatheApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D60589A0D05DD56006BFB54 /* JacobGlatheApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JacobGlatheApp.swift; sourceTree = "<group>"; };
+		1D6058810D05DD56006BFB54 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1D6058820D05DD56006BFB54 /* AppLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguage.swift; sourceTree = "<group>"; };
+		1D6058830D05DD56006BFB54 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		1D6058840D05DD56006BFB54 /* TeamMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamMember.swift; sourceTree = "<group>"; };
+		1D6058850D05DD56006BFB54 /* LocalProjectsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalProjectsData.swift; sourceTree = "<group>"; };
+		1D6058860D05DD56006BFB54 /* LocalContentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalContentData.swift; sourceTree = "<group>"; };
+		1D6058870D05DD56006BFB54 /* LocalTeamData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalTeamData.swift; sourceTree = "<group>"; };
+		1D6058880D05DD56006BFB54 /* NavbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavbarView.swift; sourceTree = "<group>"; };
+		1D6058890D05DD56006BFB54 /* BentoCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BentoCardView.swift; sourceTree = "<group>"; };
+		1D60588A0D05DD56006BFB54 /* ProjectDetailSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailSheet.swift; sourceTree = "<group>"; };
+		1D60588B0D05DD56006BFB54 /* HeroSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroSectionView.swift; sourceTree = "<group>"; };
+		1D60588C0D05DD56006BFB54 /* BentoGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BentoGridView.swift; sourceTree = "<group>"; };
+		1D60588D0D05DD56006BFB54 /* PhilosophyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhilosophyView.swift; sourceTree = "<group>"; };
+		1D60588E0D05DD56006BFB54 /* TeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamView.swift; sourceTree = "<group>"; };
+		1D60588F0D05DD56006BFB54 /* ContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactView.swift; sourceTree = "<group>"; };
+		1D6058900D05DD56006BFB54 /* LiveSyncView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveSyncView.swift; sourceTree = "<group>"; };
+		1D6058910D05DD56006BFB54 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1D6058920D05DD56006BFB54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD56006BFB53 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* JacobGlatheApp */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058700D05DD56006BFB54 /* Sources */,
+				1D6058930D05DD56006BFB54 /* Products */,
+			);
+			name = JacobGlatheApp;
+			sourceTree = "<group>";
+		};
+		1D6058700D05DD56006BFB54 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				1D60589A0D05DD56006BFB54 /* JacobGlatheApp.swift */,
+				1D6058710D05DD56006BFB54 /* Models */,
+				1D6058720D05DD56006BFB54 /* Data */,
+				1D6058730D05DD56006BFB54 /* Views */,
+				1D6058740D05DD56006BFB54 /* Resources */,
+			);
+			name = Sources;
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		1D6058710D05DD56006BFB54 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058820D05DD56006BFB54 /* AppLanguage.swift */,
+				1D6058830D05DD56006BFB54 /* Project.swift */,
+				1D6058840D05DD56006BFB54 /* TeamMember.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1D6058720D05DD56006BFB54 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058850D05DD56006BFB54 /* LocalProjectsData.swift */,
+				1D6058860D05DD56006BFB54 /* LocalContentData.swift */,
+				1D6058870D05DD56006BFB54 /* LocalTeamData.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		1D6058730D05DD56006BFB54 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058810D05DD56006BFB54 /* ContentView.swift */,
+				1D6058900D05DD56006BFB54 /* LiveSyncView.swift */,
+				1D6058750D05DD56006BFB54 /* Components */,
+				1D6058760D05DD56006BFB54 /* Sections */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1D6058750D05DD56006BFB54 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058880D05DD56006BFB54 /* NavbarView.swift */,
+				1D6058890D05DD56006BFB54 /* BentoCardView.swift */,
+				1D60588A0D05DD56006BFB54 /* ProjectDetailSheet.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		1D6058760D05DD56006BFB54 /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				1D60588B0D05DD56006BFB54 /* HeroSectionView.swift */,
+				1D60588C0D05DD56006BFB54 /* BentoGridView.swift */,
+				1D60588D0D05DD56006BFB54 /* PhilosophyView.swift */,
+				1D60588E0D05DD56006BFB54 /* TeamView.swift */,
+				1D60588F0D05DD56006BFB54 /* ContactView.swift */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		1D6058740D05DD56006BFB54 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058920D05DD56006BFB54 /* Info.plist */,
+				1D6058910D05DD56006BFB54 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		1D6058930D05DD56006BFB54 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058940D05DD56006BFB54 /* JacobGlatheApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058930D05DD56006BFB53 /* JacobGlatheApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD56006BFB53 /* Build configuration list for PBXNativeTarget "JacobGlatheApp" */;
+			buildPhases = (
+				1D60588D0D05DD56006BFB53 /* Sources */,
+				1D60588F0D05DD56006BFB53 /* Frameworks */,
+				1D60588E0D05DD56006BFB53 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JacobGlatheApp;
+			productName = JacobGlatheApp;
+			productReference = 1D6058940D05DD56006BFB54 /* JacobGlatheApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		080E96D6FE201D6D7F000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					1D6058930D05DD56006BFB53 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = 1DEB914E08733D8E0010E9CD /* Build configuration list for PBXProject "JacobGlatheApp" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = de;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				de,
+				en,
+				Base,
+			);
+			mainGroup = 080E96DDFE201D6D7F000001 /* JacobGlatheApp */;
+			productRefGroup = 1D6058930D05DD56006BFB54 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D6058930D05DD56006BFB53 /* JacobGlatheApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588E0D05DD56006BFB53 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D6058AC0D05DD56006BFB54 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588D0D05DD56006BFB53 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589B0D05DD56006BFB54 /* JacobGlatheApp.swift in Sources */,
+				1D60589C0D05DD56006BFB54 /* ContentView.swift in Sources */,
+				1D60589D0D05DD56006BFB54 /* AppLanguage.swift in Sources */,
+				1D60589E0D05DD56006BFB54 /* Project.swift in Sources */,
+				1D60589F0D05DD56006BFB54 /* TeamMember.swift in Sources */,
+				1D6058A00D05DD56006BFB54 /* LocalProjectsData.swift in Sources */,
+				1D6058A10D05DD56006BFB54 /* LocalContentData.swift in Sources */,
+				1D6058A20D05DD56006BFB54 /* LocalTeamData.swift in Sources */,
+				1D6058A30D05DD56006BFB54 /* NavbarView.swift in Sources */,
+				1D6058A40D05DD56006BFB54 /* BentoCardView.swift in Sources */,
+				1D6058A50D05DD56006BFB54 /* ProjectDetailSheet.swift in Sources */,
+				1D6058A60D05DD56006BFB54 /* HeroSectionView.swift in Sources */,
+				1D6058A70D05DD56006BFB54 /* BentoGridView.swift in Sources */,
+				1D6058A80D05DD56006BFB54 /* PhilosophyView.swift in Sources */,
+				1D6058A90D05DD56006BFB54 /* TeamView.swift in Sources */,
+				1D6058AA0D05DD56006BFB54 /* ContactView.swift in Sources */,
+				1D6058AB0D05DD56006BFB54 /* LiveSyncView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD56006BFB53 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Sources/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jacobglathe.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.9;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				TARGETED_DEVICE_FAMILY = "1,2,6";
+			};
+			name = Debug;
+		};
+		1D6058950D05DD56006BFB53 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Sources/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jacobglathe.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.9;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				TARGETED_DEVICE_FAMILY = "1,2,6";
+			};
+			name = Release;
+		};
+		1DEB914F08733D8E0010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1DEB915008733D8E0010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD56006BFB53 /* Build configuration list for PBXNativeTarget "JacobGlatheApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD56006BFB53 /* Debug */,
+				1D6058950D05DD56006BFB53 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB914E08733D8E0010E9CD /* Build configuration list for PBXProject "JacobGlatheApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB914F08733D8E0010E9CD /* Debug */,
+				1DEB915008733D8E0010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 080E96D6FE201D6D7F000001 /* Project object */;
+}
