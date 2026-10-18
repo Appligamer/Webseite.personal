@@ -4,27 +4,27 @@ export const projectsData: Project[] = [
   {
     id: 'flipper-zero-alternative',
     title: {
-      de: 'SignalMaster: Open-Source Multi-Tool & Cyber-Physical Analyzer',
-      en: 'SignalMaster: Open-Source Multi-Tool & Cyber-Physical Analyzer',
+      de: 'SignalMaster: Handheld RF Spectrum Waterfall & Cyber-Physical Analyzer',
+      en: 'SignalMaster: Handheld RF Spectrum Waterfall & Cyber-Physical Analyzer',
     },
     headline: {
-      de: 'Zugängliche Hardware-Sicherheitsforschung auf ESP32-Basis',
-      en: 'Accessible Hardware Security Research on ESP32 Architecture',
+      de: 'Hardware-Sicherheitsforschung & Netzwerk-Testing auf ESP32-Basis',
+      en: 'ESP32-Powered Cyber-Physical RF & Wireless Network Penetration Testing Suite',
     },
     shortDescription: {
-      de: 'Ein modulares, kosteneffizientes Multi-Tool als Open-Source Alternative zu kommerziellen Analysegeräten. Entwickelt aus frei verfügbaren Standardkomponenten mit nativer Linux-Server-Anbindung.',
-      en: 'A modular, cost-efficient multi-tool engineered as an open-source alternative to commercial analysis hardware. Built using off-the-shelf standard components with native Linux server integration.',
+      de: 'Ein modulares, tragbares Analyse- und Multi-Tool für Sub-GHz, Wi-Fi Paket-Injektion und RFID/NFC — entwickelt als bezahlbare Open-Source-Alternative zu proprietären Pentest-Geräten.',
+      en: 'A modular, handheld signal analysis multi-tool for Sub-GHz, Wi-Fi packet injection, and RFID/NFC — engineered as an accessible open-source alternative to proprietary pentesting hardware.',
     },
     longDescription: {
-      de: 'Moderne Sicherheitsanalyse und Signalerkennung im Sub-GHz-, RFID- und Infrarotbereich erfordern oft teure proprietäre Hardware. Dieses Projekt beweist, dass durch intelligentes Hardware-Software-Co-Design auf Basis des ESP32 Dual-Core-Mikrocontrollers ein vollwertiges, offenes Analysewerkzeug realisiert werden kann. Das System verbindet Echtzeit-Signalverarbeitung auf dem Chip mit einer sicheren Linux-Server-Pipeline für Spektralanalysen und Firmware-Orchestrierung.',
-      en: 'Modern security research and signal verification across sub-GHz, RFID, and infrared protocols historically relied on expensive proprietary devices. This project demonstrates that deliberate hardware-software co-design leveraging the ESP32 dual-core microcontroller delivers an uncompromised, open-source multi-tool. The architecture pairs real-time on-chip signal processing with a hardened Linux server backend for telemetry streaming and automated analysis.',
+      de: 'Entstanden aus praktischer Forschungsarbeit an drahtlosen Protokollen: SignalMaster nutzt einen ESP32-Dual-Core (240 MHz) gekoppelt mit einem CC1101 Sub-GHz Transceiver und SMA-Breitbandantenne. Mit Echtzeit-Wasserfall-Spektrumanalyse auf einem gestochen scharfen Monochrom-Display, integriertem PN532 NFC-Modul und Infrarot-Capture/Replay bietet das System umfassende Analyse-Möglichkeiten bei einer Hardware-BOM von unter 25 Euro.',
+      en: 'Originating from deep hands-on research in wireless protocols: SignalMaster combines an ESP32 dual-core SoC with a high-gain CC1101 Sub-GHz transceiver and SMA broadband antenna. Featuring real-time waterfall RF spectrum visualizers on an ultra-crisp display, onboard PN532 NFC reader, and IR capture/replay, the system delivers comprehensive signal verification at an accessible sub-$25 BOM.',
     },
     linkedinPitch: {
-      de: 'Demokratisierung von Hardware-Security & Embedded Engineering: Warum 200€+ für proprietäre Multi-Tools ausgeben, wenn man mit gezieltem C++/FreeRTOS-Engineering und Standardkomponenten unter 25€ Materialkosten dieselbe Analyse-Tiefe erreicht? Unser neuester Open-Source-Build vereint Sub-GHz-Transceiver, NFC/RFID, Infrarot-Capture und eine Linux-Daemon-Telemetrie in einem robusten, handlichen Formfaktor.',
-      en: 'Democratizing cyber-physical security research: Why rely on prohibitive proprietary devices when thoughtful C++/FreeRTOS engineering and accessible off-the-shelf components can deliver comprehensive signal analysis under $25 BOM? Our latest open-source build bridges ESP32 dual-core performance, sub-GHz transceiver modules, NFC/RFID, and a Linux daemon pipeline into a compact, pocketable form factor.',
+      de: 'Demokratisierung von Cyber-Physical Security: Warum 200€+ für proprietäre Multi-Tools ausgeben, wenn man mit durchdachtem C++/FreeRTOS-Engineering und Standardkomponenten unter 25€ dieselbe Signal-Tiefe erreicht? Unser neuester Open-Source Build vereint Sub-GHz Wasserfall-Analyse, Wi-Fi Packet Injection und Linux-Daemon-Telemetrie in einem robusten Taschenformat.',
+      en: 'Democratizing cyber-physical security research: Why rely on prohibitive proprietary devices when thoughtful C++/FreeRTOS engineering and accessible off-the-shelf components deliver comprehensive spectrum analysis under $25 BOM? Our latest open-source build bridges Sub-GHz RF waterfall scanning, Wi-Fi packet analysis, and a Linux daemon pipeline into a pocketable form factor.',
     },
     category: 'hardware',
-    techStack: ['ESP32', 'FreeRTOS', 'C++', 'Sub-GHz (CC1101)', 'Linux Server', 'OLED UI', 'Open Source'],
+    techStack: ['ESP32 Dual-Core', 'CC1101 Sub-GHz', 'FreeRTOS', 'C++', 'Packet Injection', 'OLED UI', 'Linux Server'],
     metrics: [
       {
         label: { de: 'BOM Hardwarekosten', en: 'Hardware BOM Cost' },
@@ -44,15 +44,15 @@ export const projectsData: Project[] = [
       },
     ],
     specs: [
-      { key: { de: 'Mikrocontroller', en: 'Microcontroller' }, value: 'ESP32-WROOM-32D Dual-Core Xtensa LX6' },
-      { key: { de: 'HF-Transceiver', en: 'RF Transceiver' }, value: 'CC1101 SPI Transceiver (315/433/868/915 MHz)' },
-      { key: { de: 'Display & Input', en: 'Display & Input' }, value: '1.3" I2C OLED (128x64) + 5-Way Tactical Navigation' },
+      { key: { de: 'Mikrocontroller', en: 'Microcontroller' }, value: 'ESP32-WROOM-32D Dual-Core Xtensa LX6 (240MHz)' },
+      { key: { de: 'HF-Transceiver', en: 'RF Transceiver' }, value: 'CC1101 SPI Transceiver (315/433/868/915 MHz) mit SMA-Antenne' },
+      { key: { de: 'Display & UI', en: 'Display & UI' }, value: 'OLED Monochrom Waterfall Spectrum Visualizer & 5-Way Taster' },
       { key: { de: 'Nahfeld & Optik', en: 'NFC & Optical' }, value: 'PN532 NFC Module + TSOP38238 IR Receiver & High-Power IR LED' },
       { key: { de: 'Server-Integration', en: 'Server Daemon' }, value: 'Headless Linux Daemon via TCP/WebSocket & MQTT' },
       { key: { de: 'Energieversorgung', en: 'Power Subsystem' }, value: 'LiPo 3.7V 1200mAh mit integriertem TP4056 Ladecontroller' },
     ],
-    image: '/images/project_flipper_alt.jpg',
-    imageAlt: 'Open Source Multi-Tool Hardware Prototype',
+    image: '/images/esp_rf_analyzer.jpg',
+    imageAlt: 'SignalMaster Handheld RF Spectrum Waterfall & Cyber-Physical Analyzer',
     gridSpan: 'md:col-span-2',
     isOpenSource: true,
     repoUrlLabel: {
@@ -62,87 +62,205 @@ export const projectsData: Project[] = [
     featured: true,
   },
   {
-    id: 'esp32-linux-edge-daemon',
+    id: 'universal-jarvis-daemon',
     title: {
-      de: 'EdgeMesh: ESP32 Distributed Fleet & Linux Daemon Hub',
-      en: 'EdgeMesh: ESP32 Distributed Fleet & Linux Daemon Hub',
+      de: 'UNIVERSAL_JARVIS: Autonomous Linux Server Daemon & Multi-Agent Core',
+      en: 'UNIVERSAL_JARVIS: Autonomous Linux Server Daemon & Multi-Agent Core',
     },
     headline: {
-      de: 'Orchestrierung verteilter Edge-Knoten auf Debian & Ubuntu',
-      en: 'Distributed Edge Microcontroller Fleet Orchestration on Linux',
+      de: 'Autonomer, lokal betriebener KI-Systemassistent auf Ubuntu Server',
+      en: 'Autonomous, Locally Hosted Multi-Agent AI System Daemon on Ubuntu Server',
     },
     shortDescription: {
-      de: 'Ein leichtgewichtiger Linux-Server-Dienst zur simultanen Verwaltung, Fernwartung und kontinuierlichen Telemetrieerfassung verteilter ESP32-Sensorknoten.',
-      en: 'A lightweight Linux server service for simultaneous management, remote OTA updates, and real-time telemetry streaming of distributed ESP32 microcontrollers.',
+      de: 'Ein universeller, autarker KI-Systemassistent als nativer systemd-Dienst auf Ubuntu Server mit 10 API-Slots, persistentem Gedächtnis und sicherem Freigabemodell.',
+      en: 'A universal, autonomous AI system assistant operating as a native systemd daemon on Ubuntu Server featuring 10 API slots, persistent memory, and explicit permission verification.',
     },
     longDescription: {
-      de: 'IoT-Installationen scheitern häufig an instabilen Synchronisationsmechanismen zwischen Feldgeräten und Rechenzentren. EdgeMesh löst dieses Problem durch einen in modernem C++ und Python implementierten Linux-Daemon, der verschlüsselte WebSocket-Verbindungen zu ESP32-Controllern aufrechterhält, Heartbeats überwacht und differenzielle Over-The-Air (OTA) Updates automatisiert ausrollt.',
-      en: 'IoT deployments often struggle with reliable bidirectional synchronization between edge hardware and backend hosts. EdgeMesh solves this through a resilient Linux system daemon that maintains persistent encrypted WebSocket sockets to ESP32 nodes, monitors health metrics, and orchestrates differential over-the-air (OTA) firmware deployments.',
+      de: 'Vorbild ist der legendäre Systemassistent in seiner technisch realistischen, umsetzbaren Form. UNIVERSAL_JARVIS läuft als vollwertiger Hintergrunddienst auf dem eigenen Ubuntu Server, überwacht Systemressourcen, verarbeitet Sprache in Echtzeit via Whisper/TTS, verwaltet definierte Skills und Schnittstellen und meldet sich proaktiv bei kritischen Ereignissen. Jede privilegierte Systemaktion unterliegt einem strikten, zweistufigen Freigabemodell.',
+      en: 'Modeled after the iconic system assistant in its technically rigorous form. UNIVERSAL_JARVIS runs as a resilient background systemd service on a dedicated Ubuntu Linux host, monitoring system health, executing real-time voice speech synthesis, managing 10 modular API slots, and pro-actively alerting on critical thresholds under an explicit two-tier permission security model.',
     },
     linkedinPitch: {
-      de: 'Microcontroller treffen Enterprise-Linux: Mit EdgeMesh haben wir eine robuste Middleware geschaffen, die bare-metal ESP32-Flotten nahtlos in Linux-Serverinfrastrukturen einbettet. Schnelle Bereitstellung, zero-downtime OTA und millisekundengenaue Telemetrie — gebaut für Skalierbarkeit ohne teure Cloud-Vendor-Locks.',
-      en: 'Bare-metal microcontrollers meet enterprise Linux: EdgeMesh bridges distributed ESP32 hardware directly into hardened Linux server infrastructure. Fast provisioning, zero-downtime OTA rollouts, and sub-millisecond telemetry capture — engineered for autonomy without cloud vendor lock-in.',
+      de: 'Von der Science-Fiction zum robusten Enterprise-Daemon: Wie wir mit UNIVERSAL_JARVIS eine Multi-Agenten-Architektur auf Ubuntu Server etabliert haben. Autonome Hintergrund-Dienste, lokale Sprachmodelle und 10 modulare API-Slots — 100% on-premise und ohne Abhängigkeit von Closed-Source-Clouds.',
+      en: 'From science fiction to hardened server engineering: UNIVERSAL_JARVIS deploys a modular multi-agent system on Ubuntu Server. Autonomous background daemons, local LLM orchestration, and 10 isolated API slots — engineered for 100% on-premise operational autonomy.',
     },
-    category: 'embedded',
-    techStack: ['Linux (systemd)', 'C++', 'Python', 'ESP32', 'WebSockets', 'SQLite / Redis', 'REST API'],
+    category: 'cloud',
+    techStack: ['Ubuntu Linux (systemd)', 'Python', 'Multi-Agent Core', '10 API Slots', 'Whisper / TTS', 'Docker', 'REST / RPC'],
     metrics: [
       {
-        label: { de: 'Gleichzeitige Nodes', en: 'Concurrent Nodes' },
-        value: '250+ je Daemon',
+        label: { de: 'API Schnittstellen', en: 'API Slots' },
+        value: '10 Modulare Slots',
       },
       {
-        label: { de: 'Server CPU-Load', en: 'Host CPU Overhead' },
-        value: '< 1.8%',
+        label: { de: 'Server CPU Idle', en: 'Idle CPU Load' },
+        value: '< 1.2 %',
       },
       {
-        label: { de: 'OTA Updatezeit', en: 'OTA Transfer Time' },
-        value: '14.2 s',
+        label: { de: 'Datensouveränität', en: 'Data Sovereignty' },
+        value: '100 % On-Premise',
       },
       {
-        label: { de: 'Verbindungsstabilität', en: 'Link Reliability' },
-        value: '99.98%',
+        label: { de: 'Antwortzeit Latenz', en: 'Inference Latency' },
+        value: '< 420 ms',
       },
     ],
     specs: [
-      { key: { de: 'Host-Plattform', en: 'Host System' }, value: 'Linux (Debian / Ubuntu / Alpine x86_64 & ARM64)' },
-      { key: { de: 'Protokoll-Stack', en: 'Protocol Suite' }, value: 'WSS (TLS 1.3), Binary Protobuf & JSON-RPC' },
-      { key: { de: 'Service Management', en: 'Service Engine' }, value: 'Native systemd Service mit automatischem Watchdog' },
-      { key: { de: 'Speicherverwaltung', en: 'Persistence Layer' }, value: 'Embedded SQLite Time-Series Buffer' },
+      { key: { de: 'Betriebssystem', en: 'Operating System' }, value: 'Ubuntu Server 24.04 LTS (x86_64 / ARM64)' },
+      { key: { de: 'Service-Architektur', en: 'Architecture' }, value: 'systemd Native Daemon mit Supervisor & Watchdog' },
+      { key: { de: 'Sicherheitsmodell', en: 'Security Engine' }, value: 'Zweistufige explizite Aktionsfreigabe (Zero Trust)' },
+      { key: { de: 'Gedächtnis-Layer', en: 'Persistence Layer' }, value: 'SQLite Vector Embeddings & Time-Series DB' },
+      { key: { de: 'Sprachverarbeitung', en: 'Audio Pipeline' }, value: 'Lokale Whisper STT + High-Fidelity TTS Pipeline' },
     ],
-    image: '/images/project_linux_edge_node.jpg',
-    imageAlt: 'Linux Server Edge Node Hardware',
+    image: '/images/jarvis_server_core.jpg',
+    imageAlt: 'UNIVERSAL_JARVIS Ubuntu Server Core Rackmount System',
     gridSpan: 'md:col-span-1',
     isOpenSource: true,
     repoUrlLabel: {
-      de: 'Repository einsehen',
-      en: 'View Repository',
+      de: 'Architektur & Dokumentation auf GitHub',
+      en: 'Architecture & Documentation on GitHub',
+    },
+    featured: true,
+  },
+  {
+    id: 'aegis-dual-mcu-alarm',
+    title: {
+      de: 'Aegis: Dual-Microcontroller Sensor & Terminal Security Architecture',
+      en: 'Aegis: Dual-Microcontroller Sensor & Terminal Security Architecture',
+    },
+    headline: {
+      de: 'Verteiltes Cyber-Physical Alarmsystem mit serieller Bus-Synchronisation',
+      en: 'Distributed Cyber-Physical Alarm Architecture with Serial Bus Synchronization',
+    },
+    shortDescription: {
+      de: 'Modulares 2-Mikrocontroller-System: Getrennte Sensor- und Terminal-Knoten mit Ultraschall-Abstandsmessung, Finite State Machine, LCD-Display und Web-Anbindung.',
+      en: 'Modular dual-microcontroller architecture: Dedicated sensor and terminal nodes with ultrasonic ranging, finite state machine logic, I2C LCD telemetry, and web connectivity.',
+    },
+    longDescription: {
+      de: 'Ausgezeichnete Jahresarbeit zur Systemtrennung in eingebetteten Sicherheitsumgebungen: Anstelle eines einzelnen überlasteten Controllers nutzt Aegis eine verteilte Architektur aus zwei Mikrocontrollern. Der Sensor-Node führt kontinuierliche Ultraschallmessungen (HC-SR04) und Schwellenwert-Analysen durch, während der Terminal-Node die Zustandsmaschine (AUS / ENTSCHÄRFT / SCHARF), LCD-Ausgabe und Benutzer-Interaktion steuert — verbunden über einen bidirektionalen seriellen Kommunikationsbus.',
+      en: 'Engineered as an advanced dual-node security deployment: Aegis decouples measurement from user interaction across two microcontrollers. The sensor node executes continuous ultrasonic ranging (HC-SR04) and threshold analytics, while the dedicated terminal node manages state machine logic (DISARMED / ARMED / ALARM), I2C LCD telemetry, and remote web alerting over a synchronized serial bus.',
+    },
+    linkedinPitch: {
+      de: 'Warum modulare Systemtrennung in der Embedded-Sicherheit den Unterschied macht: Mit Aegis haben wir ein verteiltes 2-Mikrocontroller-System gebaut, das Ultraschall-Präzisionsmessung, synchrone Bus-Kommunikation und Web-Alerting in einer störungsresistenten State-Machine bündelt.',
+      en: 'Why architectural separation matters in cyber-physical security: Aegis demonstrates distributed dual-MCU topology, pairing continuous ultrasonic telemetry with a dedicated terminal controller over an isolated serial bus.',
+    },
+    category: 'embedded',
+    techStack: ['Arduino / C++', 'Dual-MCU Serial Bus', 'HC-SR04 Ultrasonic', 'I2C LCD', 'Finite State Machine', 'Web UI'],
+    metrics: [
+      {
+        label: { de: 'Messbereich', en: 'Ranging Envelope' },
+        value: '0–200 cm',
+      },
+      {
+        label: { de: 'Bus-Latenz', en: 'Serial Latency' },
+        value: '< 5 ms',
+      },
+      {
+        label: { de: 'Display Refresh', en: 'Refresh Cycle' },
+        value: '500 ms',
+      },
+      {
+        label: { de: 'System-Topologie', en: 'Topology' },
+        value: '2-Node Verbund',
+      },
+    ],
+    specs: [
+      { key: { de: 'Topologie', en: 'Topology' }, value: '2 dedizierte Mikrocontroller (Sensor Node & Terminal Node)' },
+      { key: { de: 'Sensorik', en: 'Sensors' }, value: 'HC-SR04 Ultraschall-Sensor mit kalibrierter Alarmentfernung' },
+      { key: { de: 'Benutzer-Interface', en: 'Interface' }, value: 'I2C LCD 16x2 Display, RGB-Status-LEDs & Taster-Array' },
+      { key: { de: 'Protokoll', en: 'Protocol' }, value: 'Asynchroner bidirektionaler Serieller Datenbus' },
+      { key: { de: 'Logik', en: 'Logic Engine' }, value: 'Deterministische Finite State Machine (FSM)' },
+    ],
+    image: '/images/dual_mcu_terminal.jpg',
+    imageAlt: 'Aegis Dual-Microcontroller Sensor & Terminal Hardware Prototype',
+    gridSpan: 'md:col-span-1',
+    isOpenSource: true,
+    repoUrlLabel: {
+      de: 'Repository & Dokumentation auf GitHub',
+      en: 'Repository & Documentation on GitHub',
+    },
+    featured: true,
+  },
+  {
+    id: 'nexus-casino-slot-engine',
+    title: {
+      de: 'Nexus: High-Throughput Algorithmic Simulation & Slot Engine',
+      en: 'Nexus: High-Throughput Algorithmic Simulation & Slot Engine',
+    },
+    headline: {
+      de: 'Echtzeit-Stochastik, deterministisches RNG & interaktives Event-Casino',
+      en: 'Real-Time Stochastics, Cryptographic RNG & Event Game Architecture',
+    },
+    shortDescription: {
+      de: 'Eine hochperformante, interaktive Slotmaschinen-Engine in Python mit dynamischer Wahrscheinlichkeitsberechnung, State Machine und digitaler Event-Steuerung.',
+      en: 'A high-performance digital slot engine written in Python featuring dynamic mathematical probability distribution, state management, and real-time event gameplay.',
+    },
+    longDescription: {
+      de: 'Entwickelt als zentrale Attraktion für ein großes Schul- und Eventcasino: Nexus implementiert eine mathematisch abgesicherte, faire Zufalls-Engine in Python. Das System berechnet in Mikrosekunden Walzen-Kombinationen, animiert Spielabläufe, verwaltet Credits und Multiplikatoren und bietet ein immersives Spielerlebnis mit null Latenz.',
+      en: 'Engineered as the central digital centerpiece for an event casino: Nexus implements a mathematically verified random number distribution engine in Python. Calculating reel combinations, payout multipliers, and multi-threaded event state transitions in microseconds, it delivers zero-latency gameplay with authentic sound-fx timing.',
+    },
+    linkedinPitch: {
+      de: 'Algorithmen in der Praxis: Wie eine Python-basierte Slotmaschinen-Engine mit deterministischer Wahrscheinlichkeitsverteilung und dynamischem State Management zum Publikums-Highlight eines Groß-Events wurde. Mathematik, Game-Design und 60fps-State-Flow kombiniert.',
+      en: 'Algorithms in live execution: How a Python-based slot engine with mathematically modeled probability distribution and dynamic state management powered a live casino event. Clean math meets real-time interactive engineering.',
+    },
+    category: 'web',
+    techStack: ['Python 3', 'State Engine', 'Mathematical RNG', 'Event Automation', 'Audio/Visual Pipeline'],
+    metrics: [
+      {
+        label: { de: 'RNG Genauigkeit', en: 'RNG Fairness' },
+        value: '100% Deterministisch',
+      },
+      {
+        label: { de: 'Berechnungszeit', en: 'Spin Compute' },
+        value: '< 0.8 ms',
+      },
+      {
+        label: { de: 'Latenz', en: 'Input Latency' },
+        value: '0 ms',
+      },
+      {
+        label: { de: 'Framerate', en: 'Visual Flow' },
+        value: '60 FPS',
+      },
+    ],
+    specs: [
+      { key: { de: 'Programmiersprache', en: 'Core Engine' }, value: 'Python 3 mit objektorientierter Komponentenarchitektur' },
+      { key: { de: 'Zufallsmodell', en: 'Probability Model' }, value: 'Gewichtete stochastische Zufallsverteilung mit Auszahlungstabelle' },
+      { key: { de: 'Zustandsverwaltung', en: 'State Flow' }, value: 'Multi-Threaded Event Loop mit Transaktions-Sicherheit' },
+      { key: { de: 'Audio/Visual', en: 'Feedback Pipeline' }, value: 'Echtzeit-Synchronisation zwischen Walzenanimation und Audio' },
+    ],
+    image: '/images/algorithmic_casino.jpg',
+    imageAlt: 'Nexus Algorithmic Simulation & Slot Engine Interface',
+    gridSpan: 'md:col-span-2',
+    isOpenSource: true,
+    repoUrlLabel: {
+      de: 'Quellcode auf GitHub einsehen',
+      en: 'View Source Code on GitHub',
     },
     featured: true,
   },
   {
     id: 'apple-style-portfolio-platform',
     title: {
-      de: 'Aura: High-Performance Web & Design System',
-      en: 'Aura: High-Performance Web & Design System',
+      de: 'Aura: High-Performance Web & Native SwiftUI Architecture',
+      en: 'Aura: High-Performance Web & Native SwiftUI Architecture',
     },
     headline: {
       de: 'Kompromisslose Performance & Ästhetik nach Apple-Standards',
       en: 'Uncompromised Performance & Polish Inspired by Apple.com',
     },
     shortDescription: {
-      de: 'Ein extrem performantes Web-Designsystem mit maßgeschneiderten Bento-Grids, dynamischem Licht/Dunkel-Kontrast, Liquid Glass Effekten und 100/100 Lighthouse-Scores.',
-      en: 'An ultra-responsive web application and design system featuring custom Bento grid architecture, dynamic light/dark contrast, liquid glass blur, and 100/100 Lighthouse metrics.',
+      de: 'Ein extrem performantes Web- und App-Designsystem mit maßgeschneiderten Bento-Grids, dynamischem Kontrast, Liquid Glass und 100/100 Lighthouse-Score.',
+      en: 'An ultra-responsive web and native app architecture featuring custom Bento grid geometry, dynamic contrast, liquid glass blur, and 100/100 Lighthouse metrics.',
     },
     longDescription: {
-      de: 'Die digitale Repräsentanz für technologische Spitzenleistungen verlangt dieselbe Präzision wie die darunterliegende Systemarchitektur. Entwickelt mit modernem React, Tailwind CSS und Framer Motion, setzt diese Plattform neue Maßstäbe für Ladezeiten, Typografie-Harmonie und responsive Fluidität.',
-      en: 'Digital presence for elite engineering must exhibit the same uncompromising rigor as the underlying system architecture. Built with modern React, Tailwind CSS, and Framer Motion, this architecture sets a benchmark for instantaneous paint times, typographic balance, and fluid interactions.',
+      de: 'Die digitale Repräsentanz für technologische Spitzenleistungen verlangt dieselbe Präzision wie die darunterliegende Systemarchitektur. Entwickelt mit modernem React, Next.js, SwiftUI und Framer Motion, setzt diese Plattform neue Maßstäbe für Ladezeiten, Typografie-Harmonie und responsive Fluidität.',
+      en: 'Digital presence for elite engineering must exhibit the same uncompromising rigor as the underlying system architecture. Built with modern React, Next.js, SwiftUI, and Framer Motion, this architecture sets a benchmark for instantaneous paint times, typographic balance, and fluid interactions.',
     },
     linkedinPitch: {
-      de: 'Warum moderne Webanwendungen sich wie native Software anfühlen sollten: Durch die Reduktion von unnötigem Framework-Ballast und die konsequente Orientierung an den visuellen Prinzipien von Apple verbinden wir 60fps-Animationen mit einem makellosen Lighthouse 100 Score.',
-      en: 'Why modern web applications should feel as intentional as native hardware: By stripping away superfluous dependencies and adopting Apple’s aesthetic restraint, we achieve 60fps interaction smoothness alongside a perfect Lighthouse 100 benchmark.',
+      de: 'Warum moderne Software sich wie hochwertige Hardware anfühlen muss: Durch die Reduktion von unnötigem Framework-Ballast und die konsequente Orientierung an den visuellen Prinzipien von Apple verbinden wir 60fps-Animationen mit einem makellosen Lighthouse 100 Score.',
+      en: 'Why modern applications should feel as intentional as native hardware: By stripping away superfluous dependencies and adopting Apple’s aesthetic restraint, we achieve 60fps interaction smoothness alongside a perfect Lighthouse 100 benchmark.',
     },
     category: 'web',
-    techStack: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Vite', 'Bento Grid'],
+    techStack: ['React 19', 'Next.js App Router', 'SwiftUI Universal', 'Tailwind CSS', 'Framer Motion', 'Bento Grid'],
     metrics: [
       {
         label: { de: 'Lighthouse Score', en: 'Lighthouse Performance' },
@@ -153,17 +271,18 @@ export const projectsData: Project[] = [
         value: '0.4 s',
       },
       {
-        label: { de: 'Render-Framerate', en: 'Animation Budget' },
-        value: '60 FPS',
+        label: { de: 'Animation Framerate', en: 'Animation Budget' },
+        value: '60–120 FPS',
       },
     ],
     specs: [
-      { key: { de: 'Frontend Stack', en: 'Frontend Engine' }, value: 'React 19 + TypeScript Strictly Typed' },
-      { key: { de: 'Styling Methodik', en: 'Styling Paradigm' }, value: 'Tailwind CSS v4 + Liquid Glass Filter' },
-      { key: { de: 'Internationalisierung', en: 'Localization' }, value: 'Native Type-Safe DE/EN Engine' },
+      { key: { de: 'Web-Stack', en: 'Web Engine' }, value: 'Next.js App Router + React 19 + TypeScript Strictly Typed' },
+      { key: { de: 'Native App Stack', en: 'Native Stack' }, value: 'Pure SwiftUI Universal für iOS, iPadOS und macOS' },
+      { key: { de: 'Styling Methodik', en: 'Styling Paradigm' }, value: 'Tailwind CSS + Apple Squircle Continuous Geometry' },
+      { key: { de: 'Lokalisierung', en: 'Localization' }, value: 'Vollständig zweisprachig (Deutsch & Englisch)' },
     ],
     image: '/images/hero_hardware_lab.jpg',
-    imageAlt: 'High-Performance Web Design System',
+    imageAlt: 'Aura High-Performance Web & Native SwiftUI Architecture',
     gridSpan: 'md:col-span-1',
     isOpenSource: true,
     repoUrlLabel: {
@@ -171,53 +290,5 @@ export const projectsData: Project[] = [
       en: 'Source on GitHub',
     },
     featured: true,
-  },
-  {
-    id: 'autonomous-ci-cd-orchestrator',
-    title: {
-      de: 'Synapse: Automated Embedded CI/CD & Build Pipeline',
-      en: 'Synapse: Automated Embedded CI/CD & Build Pipeline',
-    },
-    headline: {
-      de: 'Automatisierte Tests & Flash-Pipelines für Mikrocontroller-Hardware',
-      en: 'Automated Hardware-in-the-Loop Build & Firmware Verification',
-    },
-    shortDescription: {
-      de: 'Kontinuierliche Kompilierung, statische Code-Analyse und Hardware-in-the-Loop (HIL) Tests für ESP32 und ARM Cortex-M Architekturen.',
-      en: 'Continuous firmware compilation, static code analysis, and automated hardware-in-the-loop (HIL) testing for ESP32 and ARM Cortex-M platforms.',
-    },
-    longDescription: {
-      de: 'Fehler in eingebetteter Software vor Ort zu beheben ist zeit- und kostenintensiv. Synapse schließt die Lücke zwischen modernem DevOps und physischer Hardware durch containerisierte ESP-IDF Build-Umgebungen und automatisierte Testläufe auf realen Testständen.',
-      en: 'Remediating embedded firmware bugs in the field is costly and slow. Synapse closes the divide between modern DevOps and physical target boards through containerized ESP-IDF toolchains and automated testing runs across physical test benches.',
-    },
-    linkedinPitch: {
-      de: 'DevOps trifft Bare-Metal: Wie wir den Entwicklungszyklus für Embedded Systeme um 70% beschleunigen, indem wir Software-Praktiken wie Continuous Integration und HIL-Testing auf physische ESP32-Flotten übertragen.',
-      en: 'DevOps meets bare-metal engineering: Accelerating embedded release cycles by 70% through automated hardware-in-the-loop verification and containerized cross-compilation pipelines.',
-    },
-    category: 'cloud',
-    techStack: ['Linux', 'Docker', 'ESP-IDF', 'Bash / Python', 'GitHub Actions', 'CMake'],
-    metrics: [
-      {
-        label: { de: 'Build-Zeit Einsparung', en: 'Build Time Reduction' },
-        value: '- 68%',
-      },
-      {
-        label: { de: 'Automatische Tests', en: 'Test Coverage' },
-        value: '94.2%',
-      },
-    ],
-    specs: [
-      { key: { de: 'Toolchains', en: 'Compilers' }, value: 'ESP-IDF v5.2, Xtensa GCC, Clang Static Analyzer' },
-      { key: { de: 'Test-Architektur', en: 'Verification' }, value: 'Automated Unity Test Framework on Real Silicon' },
-    ],
-    image: '/images/project_linux_edge_node.jpg',
-    imageAlt: 'Automated CI/CD Pipeline for Embedded Hardware',
-    gridSpan: 'md:col-span-2',
-    isOpenSource: true,
-    repoUrlLabel: {
-      de: 'Repository einsehen',
-      en: 'View Repository',
-    },
-    featured: false,
   },
 ];
