@@ -17,20 +17,18 @@ export const BentoCard: React.FC<BentoCardProps> = ({ project, onSelect, index =
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 24, scale: 0.985 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, margin: '-40px' }}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-20px' }}
       transition={{
-        duration: 0.55,
-        delay: (index % 4) * 0.07,
+        duration: 0.45,
+        delay: Math.min((index % 3) * 0.06, 0.18),
         ease: [0.16, 1, 0.3, 1] as const,
       }}
       whileHover={{
-        y: -4,
-        scale: 1.015,
-        boxShadow: '0 25px 60px -12px rgba(0, 0, 0, 0.85), 0 0 30px -5px rgba(41, 151, 255, 0.18)',
-        borderColor: 'rgba(255, 255, 255, 0.24)',
-        transition: { duration: 0.25, ease: [0.16, 1, 0.3, 1] as const },
+        y: -3,
+        scale: 1.01,
+        transition: { duration: 0.22, ease: [0.16, 1, 0.3, 1] as const },
       }}
       whileTap={{ scale: 0.99 }}
       onClick={() => onSelect(project)}
@@ -42,12 +40,15 @@ export const BentoCard: React.FC<BentoCardProps> = ({ project, onSelect, index =
           onSelect(project);
         }
       }}
-      className={`group relative flex flex-col justify-between overflow-hidden rounded-[28px] text-left cursor-pointer transform-gpu
+      className={`group relative flex flex-col justify-between overflow-hidden rounded-[28px] text-left cursor-pointer
         bg-[#121214] dark:bg-[#121214] light:bg-white
         border border-white/[0.08] dark:border-white/[0.08] light:border-black/[0.08]
+        hover:border-white/20 dark:hover:border-white/20 light:hover:border-black/20
+        transition-[border-color,box-shadow] duration-300
+        hover:shadow-[0_20px_50px_rgba(0,0,0,0.7)]
         p-6 sm:p-7 md:p-8 ${project.gridSpan}`}
     >
-      {/* Top Header Zone: Uncompressed Category & Action Arrow */}
+      {/* Top Header Zone: Category & Action Arrow */}
       <div>
         <div className="flex items-start justify-between gap-4 mb-4">
           <div className="flex flex-wrap items-center gap-2 text-xs font-medium tracking-wide text-[#86868b] dark:text-[#86868b] light:text-[#6e6e73]">
@@ -62,7 +63,7 @@ export const BentoCard: React.FC<BentoCardProps> = ({ project, onSelect, index =
           </div>
 
           <div className="w-8 h-8 rounded-full flex items-center justify-center bg-white/5 dark:bg-white/5 light:bg-black/5 text-[#86868b] group-hover:text-white dark:group-hover:text-white light:group-hover:text-black group-hover:bg-[#2997ff]/20 transition-all duration-200 shrink-0">
-            <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            <ArrowUpRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </div>
         </div>
 
@@ -71,7 +72,7 @@ export const BentoCard: React.FC<BentoCardProps> = ({ project, onSelect, index =
           {project.title[language]}
         </h3>
 
-        {/* Short Description (Clean Spacing, No Truncation) */}
+        {/* Short Description */}
         <p className="text-sm sm:text-base leading-relaxed text-[#86868b] dark:text-[#86868b] light:text-[#6e6e73] mb-6">
           {project.shortDescription[language]}
         </p>
@@ -89,7 +90,7 @@ export const BentoCard: React.FC<BentoCardProps> = ({ project, onSelect, index =
               decoding="async"
               onLoad={() => setImageLoaded(true)}
               onError={() => setImageError(true)}
-              className={`w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-105 ${
+              className={`w-full h-full object-cover transition-opacity duration-300 ${
                 imageLoaded ? 'opacity-100' : 'opacity-0'
               }`}
             />
@@ -107,7 +108,7 @@ export const BentoCard: React.FC<BentoCardProps> = ({ project, onSelect, index =
 
         {/* Floating Quick Key Metric */}
         {project.metrics && project.metrics.length > 0 && (
-          <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-black/75 dark:bg-black/75 light:bg-white/85 backdrop-blur-md border border-white/10 dark:border-white/10 light:border-black/10">
+          <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-black/80 dark:bg-black/80 light:bg-white/90 backdrop-blur-sm border border-white/10 dark:border-white/10 light:border-black/10">
             <span className="text-xs font-medium text-[#86868b] dark:text-[#86868b] light:text-[#6e6e73]">
               {project.metrics[0].label[language]}
             </span>

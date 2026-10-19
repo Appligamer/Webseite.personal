@@ -1,9 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { contentData } from '../../data/content';
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  onTriggerUssr?: () => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({ onTriggerUssr }) => {
   const { language } = useApp();
+  const [tapCount, setTapCount] = useState(0);
+
+  const handleSecretTap = () => {
+    const newCount = tapCount + 1;
+    setTapCount(newCount);
+    if (newCount >= 5) {
+      setTapCount(0);
+      if (onTriggerUssr) {
+        onTriggerUssr();
+      }
+    }
+    // Reset tap counter after 2.5 seconds
+    setTimeout(() => {
+      setTapCount((prev) => Math.max(0, prev - 1));
+    }, 2500);
+  };
 
   return (
     <footer className="py-12 border-t border-white/8 dark:border-white/8 light:border-black/8 bg-black dark:bg-black light:bg-[#fbfbfd]">
@@ -42,9 +62,16 @@ export const Footer: React.FC = () => {
 
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#86868b]/70 dark:text-[#86868b]/70 light:text-[#6e6e73]/80">
           <p>{contentData.footer.copyright}</p>
-          <p className="font-mono text-[11px]">
+          
+          {/* Secret Tap Trigger (5 taps triggers USSR Easter Egg) */}
+          <button
+            onClick={handleSecretTap}
+            type="button"
+            className="font-mono text-[11px] text-left hover:text-[#f5f5f7] transition-colors cursor-default select-none focus:outline-none"
+            title="System Telemetry"
+          >
             ESP32 · Linux Daemons · React 19 · Apple Design Standards
-          </p>
+          </button>
         </div>
       </div>
     </footer>

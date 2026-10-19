@@ -3,12 +3,14 @@ import { Mail, Copy, Check, ArrowUpRight, MessageSquare } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import { contentData } from '../../data/content';
 
+import { copyToClipboard } from '../../utils/clipboard';
+
 export const ContactSection: React.FC = () => {
   const { language } = useApp();
   const [copied, setCopied] = useState(false);
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(contentData.contact.email);
+  const handleCopy = async () => {
+    await copyToClipboard(contentData.contact.email);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };

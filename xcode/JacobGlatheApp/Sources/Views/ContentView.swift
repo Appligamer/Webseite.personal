@@ -3,6 +3,7 @@ import SwiftUI
 public struct ContentView: View {
     @State private var state = AppState()
     @State private var isLaunching: Bool = true
+    @State private var isUssrOpen: Bool = false
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
     public init() {}
@@ -49,9 +50,13 @@ public struct ContentView: View {
 
                                     Spacer()
 
+                                    // Secret 5-tap gesture triggers USSR Easter Egg
                                     Text("ESP32 · Linux Daemons · SwiftUI Universal")
                                         .font(.system(size: 11, weight: .medium, design: .monospaced))
                                         .foregroundStyle(Color.white.opacity(0.35))
+                                        .onTapGesture(count: 5) {
+                                            isUssrOpen = true
+                                        }
                                 }
                                 .padding(.top, 12)
                             }
@@ -73,9 +78,12 @@ public struct ContentView: View {
         .sheet(item: $state.selectedProject) { project in
             ProjectDetailSheet(project: project, language: state.language)
         }
+        .sheet(isPresented: $isUssrOpen) {
+            UssrEasterEggView()
+        }
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
-                withAnimation(.easeInOut(duration: 0.6)) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                withAnimation(.easeInOut(duration: 0.35)) {
                     isLaunching = false
                 }
             }

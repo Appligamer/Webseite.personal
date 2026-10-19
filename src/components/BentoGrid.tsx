@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { ArrowUpRight, Cpu, Radio, X, Copy, Check } from 'lucide-react';
+import { copyToClipboard } from '../utils/clipboard';
 
 interface ProjectItem {
   id: string;
@@ -189,8 +190,8 @@ export default function BentoGrid() {
   const [activeTab, setActiveTab] = useState<'overview' | 'linkedin' | 'specs'>('overview');
   const [copied, setCopied] = useState(false);
 
-  const handleCopyPitch = (text: string) => {
-    navigator.clipboard.writeText(text);
+  const handleCopyPitch = async (text: string) => {
+    await copyToClipboard(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };

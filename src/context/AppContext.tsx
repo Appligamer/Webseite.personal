@@ -12,39 +12,71 @@ interface AppContextType {
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
+// Safe storage access helper for iframe and sandboxed environments
+const getSafeStorage = (key: string): string | null => {
+  try {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      return localStorage.getItem(key);
+    }
+  } catch {
+    // SecurityError / Storage blocked in sandbox
+  }
+  return null;
+};
+
+const setSafeStorage = (key: string, value: string) => {
+  try {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      localStorage.setItem(key, value);
+    }
+  } catch {
+    // SecurityError / Storage blocked in sandbox
+  }
+};
+
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [language, setLanguageState] = useState<Language>(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('jg_lang');
-      if (saved === 'de' || saved === 'en') return saved;
-    }
+    const saved = getSafeStorage('jg_lang');
+    if (saved === 'de' || saved === 'en') return saved;
     return 'de';
   });
 
   const [theme, setThemeState] = useState<Theme>(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('jg_theme');
-      if (saved === 'dark' || saved === 'light') return saved;
-      if (window.matchMedia('(prefers-color-scheme: light)').matches) return 'light';
+    const saved = getSafeStorage('jg_theme');
+    if (saved === 'dark' || saved === 'light') return saved;
+    try {
+      if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+        return 'light';
+      }
+    } catch {
+      // Ignore matchMedia error
     }
     return 'dark';
   });
 
   useEffect(() => {
-    const root = document.documentElement;
-    if (theme === 'dark') {
-      root.classList.add('dark');
-      root.classList.remove('light');
-    } else {
-      root.classList.add('light');
-      root.classList.remove('dark');
+    try {
+      const root = document.documentElement;
+      if (theme === 'dark') {
+        root.classList.add('dark');
+        root.classList.remove('light');
+      } else {
+        root.classList.add('light');
+        root.classList.remove('dark');
+      }
+      setSafeStorage('jg_theme', theme);
+    } catch {
+      // Ignore DOM exception
     }
-    localStorage.setItem('jg_theme', theme);
   }, [theme]);
 
   useEffect(() => {
-    document.documentElement.lang = language;
-    localStorage.setItem('jg_lang', language);
+    try {
+      document.documentElement.lang = language;
+      setSafeStorage('jg_lang', language);
+    } catch {
+      // Ignore DOM exception
+    }
   }, [language]);
 
   const toggleLanguage = () => {
@@ -59,8 +91,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setLanguageState(lang);
   };
 
-  const setTheme = (t: Theme) => {
-    setThemeState(t);
+  const setTheme = (newTheme: Theme) => {
+    setThemeState(newTheme);
   };
 
   return (

@@ -4,6 +4,8 @@ import { Project } from '../../types';
 import { useApp } from '../../context/AppContext';
 import { contentData } from '../../data/content';
 
+import { copyToClipboard } from '../../utils/clipboard';
+
 interface ProjectModalProps {
   project: Project | null;
   onClose: () => void;
@@ -30,8 +32,8 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
 
   if (!project) return null;
 
-  const handleCopyPitch = () => {
-    navigator.clipboard.writeText(project.linkedinPitch[language]);
+  const handleCopyPitch = async () => {
+    await copyToClipboard(project.linkedinPitch[language]);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -211,19 +213,27 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
               <div className="overflow-hidden rounded-2xl border border-white/10 dark:border-white/10 light:border-black/10">
                 <table className="w-full text-left text-sm">
                   <tbody className="divide-y divide-white/5 dark:divide-y dark:divide-white/5 light:divide-y light:divide-black/5">
-                    {project.specs.map((spec, i) => (
-                      <tr
-                        key={i}
-                        className="hover:bg-white/[0.02] dark:hover:bg-white/[0.02] light:hover:bg-black/[0.02]"
-                      >
-                        <td className="py-3.5 px-5 font-medium text-[#86868b] dark:text-[#86868b] light:text-[#6e6e73] w-1/3">
-                          {spec.key[language]}
-                        </td>
-                        <td className="py-3.5 px-5 text-[#f5f5f7] dark:text-[#f5f5f7] light:text-[#1d1d1f] font-mono text-xs md:text-sm">
-                          {spec.value}
+                    {project.specs && project.specs.length > 0 ? (
+                      project.specs.map((spec, i) => (
+                        <tr
+                          key={i}
+                          className="hover:bg-white/[0.02] dark:hover:bg-white/[0.02] light:hover:bg-black/[0.02]"
+                        >
+                          <td className="py-3.5 px-5 font-medium text-[#86868b] dark:text-[#86868b] light:text-[#6e6e73] w-1/3">
+                            {spec.key[language]}
+                          </td>
+                          <td className="py-3.5 px-5 text-[#f5f5f7] dark:text-[#f5f5f7] light:text-[#1d1d1f] font-mono text-xs md:text-sm">
+                            {spec.value}
+                          </td>
+                        </tr>
+                      ))
+                    ) : (
+                      <tr>
+                        <td colSpan={2} className="py-4 px-5 text-sm text-[#86868b]">
+                          {language === 'de' ? 'Keine Spezifikationen verfügbar' : 'No specifications available'}
                         </td>
                       </tr>
-                    ))}
+                    )}
                   </tbody>
                 </table>
               </div>

@@ -11,6 +11,8 @@
     letter-spacing: -0.011em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
   }
 
   html.dark {
@@ -24,12 +26,27 @@
     background-color: #fbfbfd;
     color: #1d1d1f;
   }
+
+  body {
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior-y: none;
+    touch-action: pan-y;
+  }
 }
 
-/* Apple Pro Glass & Lighting Effects */
+/* High-Performance Apple Pro Glass */
 .apple-glass {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+  transform: translateZ(0);
+}
+
+/* Optimized for mobile GPUs (iPhone & iPad 60-120 FPS) */
+@media (max-width: 1024px) {
+  .apple-glass {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
 }
 
 .apple-border {
@@ -46,7 +63,7 @@
 
 /* Subtle gradient text */
 .gradient-text-apple {
-  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.68) 100%);
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.72) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -57,17 +74,24 @@
   -webkit-text-fill-color: transparent;
 }
 
+/* GPU acceleration helper */
+.gpu-layer {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(120, 120, 128, 0.3);
+  background: rgba(120, 120, 128, 0.25);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(120, 120, 128, 0.5);
+  background: rgba(120, 120, 128, 0.45);
 }
