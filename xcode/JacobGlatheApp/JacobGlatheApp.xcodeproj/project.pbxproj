@@ -25,6 +25,8 @@
 		1D6058AA0D05DD56006BFB54 /* ContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D60588F0D05DD56006BFB54 /* ContactView.swift */; };
 		1D6058AB0D05DD56006BFB54 /* LiveSyncView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6058900D05DD56006BFB54 /* LiveSyncView.swift */; };
 		1D6058AC0D05DD56006BFB54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D6058910D05DD56006BFB54 /* Assets.xcassets */; };
+		1D6058AD0D05DD56006BFB54 /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6058930D05DD56006BFB55 /* LaunchScreenView.swift */; };
+		1D6058AE0D05DD56006BFB54 /* JacobGlatheWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6058940D05DD56006BFB55 /* JacobGlatheWidget.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		1D6058900D05DD56006BFB54 /* LiveSyncView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveSyncView.swift; sourceTree = "<group>"; };
 		1D6058910D05DD56006BFB54 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1D6058920D05DD56006BFB54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1D6058930D05DD56006BFB55 /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
+		1D6058940D05DD56006BFB55 /* JacobGlatheWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JacobGlatheWidget.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +112,8 @@
 			children = (
 				1D6058810D05DD56006BFB54 /* ContentView.swift */,
 				1D6058900D05DD56006BFB54 /* LiveSyncView.swift */,
+				1D6058930D05DD56006BFB55 /* LaunchScreenView.swift */,
+				1D6058940D05DD56006BFB55 /* JacobGlatheWidget.swift */,
 				1D6058750D05DD56006BFB54 /* Components */,
 				1D6058760D05DD56006BFB54 /* Sections */,
 			);
@@ -240,6 +246,8 @@
 				1D6058A90D05DD56006BFB54 /* TeamView.swift in Sources */,
 				1D6058AA0D05DD56006BFB54 /* ContactView.swift in Sources */,
 				1D6058AB0D05DD56006BFB54 /* LiveSyncView.swift in Sources */,
+				1D6058AD0D05DD56006BFB54 /* LaunchScreenView.swift in Sources */,
+				1D6058AE0D05DD56006BFB54 /* JacobGlatheWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
