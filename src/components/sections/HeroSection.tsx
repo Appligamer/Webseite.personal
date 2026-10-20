@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { ArrowDown, ArrowUpRight, Cpu, Terminal, ShieldCheck, Zap } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ArrowDown, ArrowUpRight, Cpu } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import { contentData } from '../../data/content';
+import { triggerHaptic, hapticSpring } from '../../utils/haptics';
 
 export const HeroSection: React.FC = () => {
   const { language } = useApp();
@@ -32,23 +34,29 @@ export const HeroSection: React.FC = () => {
           </p>
         </div>
 
-        {/* Primary Action Buttons */}
+        {/* Primary Action Buttons with Native Haptic Spring Feedback */}
         <div className="flex flex-wrap items-center gap-4 mb-16 md:mb-20">
-          <a
+          <motion.a
             href="#projects"
-            className="flex items-center gap-2 px-6 py-3.5 text-sm md:text-base font-semibold text-white bg-[#0071e3] hover:bg-[#0077ed] rounded-2xl transition-all shadow-[0_10px_25px_rgba(0,113,227,0.3)] hover:scale-[1.02] active:scale-[0.98]"
+            whileHover={{ scale: 1.02 }}
+            whileTap={hapticSpring.button}
+            onClick={() => triggerHaptic('medium')}
+            className="flex items-center gap-2 px-6 py-3.5 text-sm md:text-base font-semibold text-white bg-[#0071e3] hover:bg-[#0077ed] rounded-2xl transition-colors shadow-[0_10px_25px_rgba(0,113,227,0.3)]"
           >
             <span>{contentData.hero.exploreCta[language]}</span>
             <ArrowDown className="w-4 h-4" />
-          </a>
+          </motion.a>
 
-          <a
+          <motion.a
             href="#contact"
-            className="flex items-center gap-2 px-6 py-3.5 text-sm md:text-base font-semibold text-[#f5f5f7] dark:text-[#f5f5f7] light:text-[#1d1d1f] bg-white/5 dark:bg-white/5 light:bg-black/5 hover:bg-white/10 dark:hover:bg-white/10 light:hover:bg-black/10 rounded-2xl transition-all border border-white/10 dark:border-white/10 light:border-black/10 hover:scale-[1.02] active:scale-[0.98]"
+            whileHover={{ scale: 1.02 }}
+            whileTap={hapticSpring.button}
+            onClick={() => triggerHaptic('light')}
+            className="flex items-center gap-2 px-6 py-3.5 text-sm md:text-base font-semibold text-[#f5f5f7] dark:text-[#f5f5f7] light:text-[#1d1d1f] bg-white/5 dark:bg-white/5 light:bg-black/5 hover:bg-white/10 dark:hover:bg-white/10 light:hover:bg-black/10 rounded-2xl transition-colors border border-white/10 dark:border-white/10 light:border-black/10"
           >
             <span>{contentData.hero.contactCta[language]}</span>
             <ArrowUpRight className="w-4 h-4" />
-          </a>
+          </motion.a>
         </div>
 
         {/* Hero Visual Container: Studio Hardware Engineering Lab */}
@@ -56,11 +64,7 @@ export const HeroSection: React.FC = () => {
           <img
             src="/images/hero_hardware_lab.jpg"
             alt="Minimalist Hardware Engineering Lab"
-            referrerPolicy="no-referrer"
-            onLoad={() => setHeroImageLoaded(true)}
-            className={`w-full h-full object-cover transition-opacity duration-1000 ${
-              heroImageLoaded ? 'opacity-100' : 'opacity-0'
-            }`}
+            className="w-full h-full object-cover"
           />
           {/* Ambient overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />

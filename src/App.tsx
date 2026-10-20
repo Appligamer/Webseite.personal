@@ -68,6 +68,7 @@ const MainContent: React.FC = () => {
   useEffect(() => {
     let buffer = '';
     const handleKey = (e: KeyboardEvent) => {
+      if (!e || typeof e.key !== 'string') return;
       buffer += e.key.toLowerCase();
       if (buffer.length > 10) buffer = buffer.slice(-10);
       if (buffer.includes('ussr') || buffer.includes('udssr')) {

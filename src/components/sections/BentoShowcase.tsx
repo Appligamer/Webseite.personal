@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { Project, ProjectCategory } from '../../types';
 import { projectsData } from '../../data/projects';
 import { contentData } from '../../data/content';
 import { useApp } from '../../context/AppContext';
 import { BentoCard } from '../ui/BentoCard';
 import { Cpu } from 'lucide-react';
+import { triggerHaptic, hapticSpring } from '../../utils/haptics';
 
 interface BentoShowcaseProps {
   onSelectProject: (project: Project) => void;
@@ -18,6 +20,19 @@ export const BentoShowcase: React.FC<BentoShowcaseProps> = ({ onSelectProject })
     if (activeCategory === 'all') return true;
     return p.category === activeCategory;
   });
+
+  const handleCategoryChange = (cat: ProjectCategory) => {
+    triggerHaptic('selection');
+    setActiveCategory(cat);
+  };
+
+  const categories: { key: ProjectCategory; label: string }[] = [
+    { key: 'all', label: contentData.bento.filterAll[language] },
+    { key: 'hardware', label: contentData.bento.filterHardware[language] },
+    { key: 'embedded', label: contentData.bento.filterEmbedded[language] },
+    { key: 'cloud', label: contentData.bento.filterCloud[language] },
+    { key: 'web', label: contentData.bento.filterWeb[language] },
+  ];
 
   return (
     <section id="projects" className="py-24 md:py-32 scroll-mt-20">
@@ -37,58 +52,22 @@ export const BentoShowcase: React.FC<BentoShowcaseProps> = ({ onSelectProject })
             </p>
           </div>
 
-          {/* Functional Category Filter (Segmented control button group) */}
+          {/* Functional Category Filter (Tactile Haptic Button Group) */}
           <div className="flex flex-wrap items-center gap-1.5 p-1.5 rounded-2xl bg-[#121214] dark:bg-[#121214] light:bg-[#f5f5f7] border border-white/8 dark:border-white/8 light:border-black/8 self-start md:self-end">
-            <button
-              onClick={() => setActiveCategory('all')}
-              className={`px-3.5 py-1.5 text-xs font-semibold rounded-xl transition-all whitespace-nowrap ${
-                activeCategory === 'all'
-                  ? 'bg-white/15 dark:bg-white/15 light:bg-white text-white dark:text-white light:text-black shadow-sm'
-                  : 'text-[#86868b] hover:text-white dark:hover:text-white light:hover:text-black'
-              }`}
-            >
-              {contentData.bento.filterAll[language]}
-            </button>
-            <button
-              onClick={() => setActiveCategory('hardware')}
-              className={`px-3.5 py-1.5 text-xs font-semibold rounded-xl transition-all whitespace-nowrap ${
-                activeCategory === 'hardware'
-                  ? 'bg-white/15 dark:bg-white/15 light:bg-white text-white dark:text-white light:text-black shadow-sm'
-                  : 'text-[#86868b] hover:text-white dark:hover:text-white light:hover:text-black'
-              }`}
-            >
-              {contentData.bento.filterHardware[language]}
-            </button>
-            <button
-              onClick={() => setActiveCategory('embedded')}
-              className={`px-3.5 py-1.5 text-xs font-semibold rounded-xl transition-all whitespace-nowrap ${
-                activeCategory === 'embedded'
-                  ? 'bg-white/15 dark:bg-white/15 light:bg-white text-white dark:text-white light:text-black shadow-sm'
-                  : 'text-[#86868b] hover:text-white dark:hover:text-white light:hover:text-black'
-              }`}
-            >
-              {contentData.bento.filterEmbedded[language]}
-            </button>
-            <button
-              onClick={() => setActiveCategory('cloud')}
-              className={`px-3.5 py-1.5 text-xs font-semibold rounded-xl transition-all whitespace-nowrap ${
-                activeCategory === 'cloud'
-                  ? 'bg-white/15 dark:bg-white/15 light:bg-white text-white dark:text-white light:text-black shadow-sm'
-                  : 'text-[#86868b] hover:text-white dark:hover:text-white light:hover:text-black'
-              }`}
-            >
-              {contentData.bento.filterCloud[language]}
-            </button>
-            <button
-              onClick={() => setActiveCategory('web')}
-              className={`px-3.5 py-1.5 text-xs font-semibold rounded-xl transition-all whitespace-nowrap ${
-                activeCategory === 'web'
-                  ? 'bg-white/15 dark:bg-white/15 light:bg-white text-white dark:text-white light:text-black shadow-sm'
-                  : 'text-[#86868b] hover:text-white dark:hover:text-white light:hover:text-black'
-              }`}
-            >
-              {contentData.bento.filterWeb[language]}
-            </button>
+            {categories.map((cat) => (
+              <motion.button
+                key={cat.key}
+                whileTap={hapticSpring.pill}
+                onClick={() => handleCategoryChange(cat.key)}
+                className={`px-3.5 py-1.5 text-xs font-semibold rounded-xl transition-all whitespace-nowrap cursor-pointer ${
+                  activeCategory === cat.key
+                    ? 'bg-white/15 dark:bg-white/15 light:bg-white text-white dark:text-white light:text-black shadow-sm'
+                    : 'text-[#86868b] hover:text-white dark:hover:text-white light:hover:text-black'
+                }`}
+              >
+                {cat.label}
+              </motion.button>
+            ))}
           </div>
         </div>
 

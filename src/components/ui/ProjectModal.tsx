@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { X, ExternalLink, Check, Copy, Share2, Terminal, Cpu } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { X, ExternalLink, Check, Copy, Share2 } from 'lucide-react';
 import { Project } from '../../types';
 import { useApp } from '../../context/AppContext';
 import { contentData } from '../../data/content';
-
 import { copyToClipboard } from '../../utils/clipboard';
+import { triggerHaptic, hapticSpring } from '../../utils/haptics';
 
 interface ProjectModalProps {
   project: Project | null;
@@ -18,7 +19,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
+      if (e && e.key === 'Escape') onClose();
     };
     if (project) {
       document.body.style.overflow = 'hidden';
@@ -32,7 +33,18 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
 
   if (!project) return null;
 
+  const handleClose = () => {
+    triggerHaptic('light');
+    onClose();
+  };
+
+  const handleTabChange = (tab: 'overview' | 'linkedin' | 'specs') => {
+    triggerHaptic('selection');
+    setActiveTab(tab);
+  };
+
   const handleCopyPitch = async () => {
+    triggerHaptic('light');
     await copyToClipboard(project.linkedinPitch[language]);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -47,7 +59,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
     >
       {/* Backdrop */}
       <div
-        onClick={onClose}
+        onClick={handleClose}
         className="fixed inset-0 bg-black/80 backdrop-blur-md transition-opacity"
       />
 
@@ -65,13 +77,14 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
             </span>
           </div>
 
-          <button
-            onClick={onClose}
+          <motion.button
+            whileTap={hapticSpring.iconButton}
+            onClick={handleClose}
             aria-label={contentData.modal.close[language]}
-            className="w-9 h-9 rounded-full flex items-center justify-center bg-white/5 dark:bg-white/5 light:bg-black/5 hover:bg-white/10 dark:hover:bg-white/10 light:hover:bg-black/10 text-[#86868b] hover:text-white dark:hover:text-white light:hover:text-black transition-colors"
+            className="w-9 h-9 rounded-full flex items-center justify-center bg-white/5 dark:bg-white/5 light:bg-black/5 hover:bg-white/10 dark:hover:bg-white/10 light:hover:bg-black/10 text-[#86868b] hover:text-white dark:hover:text-white light:hover:text-black transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
-          </button>
+          </motion.button>
         </div>
 
         {/* Content Body */}
@@ -103,38 +116,41 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
             ))}
           </div>
 
-          {/* Interactive Navigation Tabs */}
+          {/* Interactive Navigation Tabs with Haptics */}
           <div className="flex items-center gap-2 p-1.5 rounded-xl bg-white/5 dark:bg-white/5 light:bg-black/5 w-fit">
-            <button
-              onClick={() => setActiveTab('overview')}
-              className={`px-4 py-2 text-xs md:text-sm font-medium rounded-lg transition-all ${
+            <motion.button
+              whileTap={hapticSpring.pill}
+              onClick={() => handleTabChange('overview')}
+              className={`px-4 py-2 text-xs md:text-sm font-medium rounded-lg transition-all cursor-pointer ${
                 activeTab === 'overview'
                   ? 'bg-white/15 dark:bg-white/15 light:bg-white text-white dark:text-white light:text-black shadow-sm'
                   : 'text-[#86868b] hover:text-white'
               }`}
             >
               {contentData.modal.overviewTab[language]}
-            </button>
-            <button
-              onClick={() => setActiveTab('linkedin')}
-              className={`px-4 py-2 text-xs md:text-sm font-medium rounded-lg transition-all ${
+            </motion.button>
+            <motion.button
+              whileTap={hapticSpring.pill}
+              onClick={() => handleTabChange('linkedin')}
+              className={`px-4 py-2 text-xs md:text-sm font-medium rounded-lg transition-all cursor-pointer ${
                 activeTab === 'linkedin'
                   ? 'bg-white/15 dark:bg-white/15 light:bg-white text-white dark:text-white light:text-black shadow-sm'
                   : 'text-[#86868b] hover:text-white'
               }`}
             >
               {contentData.modal.linkedinTab[language]}
-            </button>
-            <button
-              onClick={() => setActiveTab('specs')}
-              className={`px-4 py-2 text-xs md:text-sm font-medium rounded-lg transition-all ${
+            </motion.button>
+            <motion.button
+              whileTap={hapticSpring.pill}
+              onClick={() => handleTabChange('specs')}
+              className={`px-4 py-2 text-xs md:text-sm font-medium rounded-lg transition-all cursor-pointer ${
                 activeTab === 'specs'
                   ? 'bg-white/15 dark:bg-white/15 light:bg-white text-white dark:text-white light:text-black shadow-sm'
                   : 'text-[#86868b] hover:text-white'
               }`}
             >
               {contentData.modal.specsTab[language]}
-            </button>
+            </motion.button>
           </div>
 
           {/* Tab 1: Overview */}
@@ -144,7 +160,6 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                 <img
                   src={project.image}
                   alt={project.imageAlt}
-                  referrerPolicy="no-referrer"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -154,10 +169,10 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                 </p>
               </div>
 
-              {/* Tech Stack Unboxed */}
-              <div>
-                <h4 className="text-xs uppercase tracking-wider font-semibold text-[#86868b] mb-3">
-                  Technologie & Protokolle
+              {/* Technologies */}
+              <div className="space-y-3 pt-4 border-t border-white/5 dark:border-white/5 light:border-black/5">
+                <h4 className="text-xs font-semibold uppercase tracking-wider text-[#86868b] dark:text-[#86868b] light:text-[#6e6e73]">
+                  {language === 'de' ? 'Technologie & Architektur' : 'Technology & Architecture'}
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {project.techStack.map((tech) => (
@@ -182,9 +197,10 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                     <Share2 className="w-4 h-4" />
                     <span>LinkedIn Executive Pitch</span>
                   </div>
-                  <button
+                  <motion.button
+                    whileTap={hapticSpring.button}
                     onClick={handleCopyPitch}
-                    className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-white/10 hover:bg-white/15 text-white transition-colors"
+                    className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-white/10 hover:bg-white/15 text-white transition-colors cursor-pointer"
                   >
                     {copied ? (
                       <>
@@ -197,7 +213,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                         <span>Kopieren</span>
                       </>
                     )}
-                  </button>
+                  </motion.button>
                 </div>
 
                 <div className="p-4 rounded-xl bg-black/40 dark:bg-black/40 light:bg-black/5 font-sans text-sm md:text-base leading-relaxed text-[#f5f5f7] dark:text-[#f5f5f7] light:text-[#1d1d1f] border border-white/5">
@@ -241,29 +257,34 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
           )}
         </div>
 
-        {/* Modal Footer */}
+        {/* Modal Footer with Haptic Controls */}
         <div className="sticky bottom-0 z-20 flex items-center justify-between px-6 py-4 border-t border-white/8 dark:border-white/8 light:border-black/8 bg-[#121214]/95 dark:bg-[#121214]/95 light:bg-white/95 apple-glass">
           <div className="text-xs text-[#86868b] dark:text-[#86868b] light:text-[#6e6e73]">
             {project.isOpenSource ? 'Open Source Architecture' : 'Commercial R&D'}
           </div>
 
           <div className="flex items-center gap-3">
-            <button
-              onClick={onClose}
-              className="px-4 py-2 text-xs md:text-sm font-medium rounded-xl text-[#86868b] hover:text-white dark:hover:text-white light:hover:text-black transition-colors"
+            <motion.button
+              whileTap={hapticSpring.button}
+              onClick={handleClose}
+              className="px-4 py-2 text-xs md:text-sm font-medium rounded-xl text-[#86868b] hover:text-white dark:hover:text-white light:hover:text-black transition-colors cursor-pointer"
             >
               {contentData.modal.close[language]}
-            </button>
+            </motion.button>
 
             {project.isOpenSource && (
-              <a
+              <motion.a
                 href="#contact"
-                onClick={onClose}
-                className="flex items-center gap-2 px-5 py-2 text-xs md:text-sm font-semibold text-white bg-[#0071e3] hover:bg-[#0077ed] rounded-xl transition-all shadow-sm"
+                whileTap={hapticSpring.button}
+                onClick={() => {
+                  triggerHaptic('medium');
+                  onClose();
+                }}
+                className="flex items-center gap-2 px-5 py-2 text-xs md:text-sm font-semibold text-white bg-[#0071e3] hover:bg-[#0077ed] rounded-xl transition-colors shadow-sm"
               >
                 <span>{project.repoUrlLabel[language]}</span>
                 <ExternalLink className="w-3.5 h-3.5" />
-              </a>
+              </motion.a>
             )}
           </div>
         </div>

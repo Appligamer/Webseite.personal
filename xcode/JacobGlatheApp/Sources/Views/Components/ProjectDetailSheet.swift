@@ -1,15 +1,9 @@
 import SwiftUI
-#if canImport(UIKit)
-import UIKit
-#elseif canImport(AppKit)
-import AppKit
-#endif
 
 public struct ProjectDetailSheet: View {
     let project: Project
     let language: AppLanguage
     @Environment(\.dismiss) private var dismiss
-
     @State private var selectedTab = 0
     @State private var copied = false
 
@@ -19,13 +13,12 @@ public struct ProjectDetailSheet: View {
     }
 
     private func copyToClipboard(_ text: String) {
-        #if canImport(UIKit)
+        #if os(iOS)
         UIPasteboard.general.string = text
-        #elseif canImport(AppKit)
+        #elseif os(macOS)
         NSPasteboard.general.clearContents()
         NSPasteboard.general.setString(text, forType: .string)
         #endif
-
         copied = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             copied = false
@@ -55,6 +48,13 @@ public struct ProjectDetailSheet: View {
                         .font(.system(size: 26, weight: .bold, design: .default))
                         .foregroundStyle(Color(red: 0.96, green: 0.96, blue: 0.97))
                         .lineSpacing(4)
+
+                    // Project High-Res Visual Frame with SafeImageView
+                    SafeImageView(name: project.imageName, height: 240, cornerRadius: 20)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                                .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                        )
 
                     // Short Description
                     Text(project.shortDescription.text(for: language))
@@ -133,27 +133,31 @@ public struct ProjectDetailSheet: View {
                                         Image(systemName: copied ? "checkmark" : "doc.on.doc")
                                             .font(.system(size: 12, weight: .semibold))
                                         Text(copied ? (language == .de ? "Kopiert" : "Copied") : (language == .de ? "Kopieren" : "Copy"))
-                                            .font(.system(size: 12, weight: .semibold))
+                                            .font(.system(size: 12, weight: .medium))
                                     }
                                     .padding(.horizontal, 10)
                                     .padding(.vertical, 6)
-                                    .background(Color.white.opacity(0.1))
-                                    .foregroundStyle(.white)
+                                    .background(Color.white.opacity(0.08))
                                     .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
                                 }
+                                .buttonStyle(.plain)
                             }
 
                             Text(project.linkedinPitch.text(for: language))
                                 .font(.system(size: 14, weight: .regular))
-                                .foregroundStyle(Color(red: 0.92, green: 0.92, blue: 0.94))
+                                .foregroundStyle(Color(red: 0.85, green: 0.85, blue: 0.88))
                                 .lineSpacing(5)
                                 .padding(16)
                                 .background(Color.white.opacity(0.03))
-                                .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 12, style: .continuous)
+                                        .stroke(Color.white.opacity(0.06), lineWidth: 1)
+                                )
                         }
                     } else {
-                        // Hardware & Tech Specs Table
-                        VStack(spacing: 0) {
+                        // Specs Tab
+                        VStack(spacing: 1) {
                             ForEach(project.specs) { spec in
                                 HStack {
                                     Text(spec.key.text(for: language))
@@ -164,31 +168,38 @@ public struct ProjectDetailSheet: View {
                                     Spacer()
 
                                     Text(spec.value)
-                                        .font(.system(size: 13, weight: .medium, design: .monospaced))
+                                        .font(.system(size: 13, weight: .regular, design: .monospaced))
                                         .foregroundStyle(Color(red: 0.96, green: 0.96, blue: 0.97))
                                         .multilineTextAlignment(.trailing)
                                 }
                                 .padding(.vertical, 12)
                                 .padding(.horizontal, 14)
+                                .background(Color.white.opacity(0.02))
 
                                 Divider()
-                                    .background(Color.white.opacity(0.06))
+                                    .background(Color.white.opacity(0.04))
                             }
                         }
-                        .background(Color.white.opacity(0.03))
                         .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                                .stroke(Color.white.opacity(0.08), lineWidth: 1)
+                        )
                     }
                 }
                 .padding(24)
             }
-            .background(Color(red: 0.086, green: 0.086, blue: 0.09))
+            .background(Color(red: 0.07, green: 0.07, blue: 0.08).ignoresSafeArea())
             .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button(language == .de ? "Schließen" : "Close") {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
                         dismiss()
+                    } label: {
+                        Image(systemName: "xmark.circle.fill")
+                            .font(.system(size: 20))
+                            .foregroundStyle(Color.white.opacity(0.6))
                     }
-                    .font(.system(size: 14, weight: .semibold))
-                    .foregroundStyle(Color(red: 0.16, green: 0.59, blue: 1.0))
+                    .buttonStyle(.plain)
                 }
             }
         }

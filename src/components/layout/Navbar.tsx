@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { Sun, Moon, Globe, ArrowUpRight } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import { contentData } from '../../data/content';
+import { triggerHaptic, hapticSpring } from '../../utils/haptics';
 
 export const Navbar: React.FC = () => {
   const { language, theme, toggleLanguage, toggleTheme } = useApp();
@@ -14,6 +16,16 @@ export const Navbar: React.FC = () => {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleLangToggle = () => {
+    triggerHaptic('selection');
+    toggleLanguage();
+  };
+
+  const handleThemeToggle = () => {
+    triggerHaptic('selection');
+    toggleTheme();
+  };
 
   return (
     <header
@@ -60,39 +72,43 @@ export const Navbar: React.FC = () => {
           </a>
         </nav>
 
-        {/* Zone 3: Interactive Controls (Language, Theme, Primary Action) */}
+        {/* Zone 3: Interactive Controls (Language, Theme, Primary Action) with Haptics */}
         <div className="flex items-center gap-3 shrink-0">
           {/* Language Switcher */}
-          <button
-            onClick={toggleLanguage}
+          <motion.button
+            whileTap={hapticSpring.iconButton}
+            onClick={handleLangToggle}
             aria-label="Sprache umschalten / Switch language"
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold text-[#86868b] hover:text-white dark:hover:text-white light:hover:text-black bg-white/5 dark:bg-white/5 light:bg-black/5 hover:bg-white/10 transition-colors whitespace-nowrap shrink-0"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold text-[#86868b] hover:text-white dark:hover:text-white light:hover:text-black bg-white/5 dark:bg-white/5 light:bg-black/5 hover:bg-white/10 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
           >
             <Globe className="w-3.5 h-3.5" />
             <span className="uppercase">{language}</span>
-          </button>
+          </motion.button>
 
           {/* Theme Switcher */}
-          <button
-            onClick={toggleTheme}
+          <motion.button
+            whileTap={hapticSpring.iconButton}
+            onClick={handleThemeToggle}
             aria-label="Theme wechseln / Toggle theme"
-            className="w-8 h-8 rounded-lg flex items-center justify-center text-[#86868b] hover:text-white dark:hover:text-white light:hover:text-black bg-white/5 dark:bg-white/5 light:bg-black/5 hover:bg-white/10 transition-colors shrink-0"
+            className="w-8 h-8 rounded-lg flex items-center justify-center text-[#86868b] hover:text-white dark:hover:text-white light:hover:text-black bg-white/5 dark:bg-white/5 light:bg-black/5 hover:bg-white/10 transition-colors shrink-0 cursor-pointer"
           >
             {theme === 'dark' ? (
               <Sun className="w-4 h-4 text-amber-300" />
             ) : (
               <Moon className="w-4 h-4 text-slate-700" />
             )}
-          </button>
+          </motion.button>
 
           {/* 1 Primary Action CTA */}
-          <a
+          <motion.a
             href="#contact"
-            className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 text-xs md:text-sm font-semibold text-white bg-[#0071e3] hover:bg-[#0077ed] rounded-xl transition-all shadow-sm hover:scale-[1.02] active:scale-[0.98] whitespace-nowrap shrink-0"
+            whileTap={hapticSpring.button}
+            onClick={() => triggerHaptic('light')}
+            className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 text-xs md:text-sm font-semibold text-white bg-[#0071e3] hover:bg-[#0077ed] rounded-xl transition-colors shadow-sm whitespace-nowrap shrink-0"
           >
             <span>{contentData.hero.contactCta[language]}</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
-          </a>
+          </motion.a>
         </div>
       </div>
     </header>

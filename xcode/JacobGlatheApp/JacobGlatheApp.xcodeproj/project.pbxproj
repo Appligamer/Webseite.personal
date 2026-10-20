@@ -28,6 +28,7 @@
 		1D6058AD0D05DD56006BFB54 /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6058930D05DD56006BFB55 /* LaunchScreenView.swift */; };
 		1D6058AE0D05DD56006BFB54 /* JacobGlatheWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6058940D05DD56006BFB55 /* JacobGlatheWidget.swift */; };
 		1D6058AF0D05DD56006BFB54 /* UssrEasterEggView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6058950D05DD56006BFB55 /* UssrEasterEggView.swift */; };
+		1D6058B00D05DD56006BFB54 /* SafeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6058960D05DD56006BFB55 /* SafeImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		1D6058930D05DD56006BFB55 /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
 		1D6058940D05DD56006BFB55 /* JacobGlatheWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JacobGlatheWidget.swift; sourceTree = "<group>"; };
 		1D6058950D05DD56006BFB55 /* UssrEasterEggView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UssrEasterEggView.swift; sourceTree = "<group>"; };
+		1D6058960D05DD56006BFB55 /* SafeImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 			children = (
 				1D6058880D05DD56006BFB54 /* NavbarView.swift */,
 				1D6058890D05DD56006BFB54 /* BentoCardView.swift */,
+				1D6058960D05DD56006BFB55 /* SafeImageView.swift */,
 				1D6058950D05DD56006BFB55 /* UssrEasterEggView.swift */,
 				1D60588A0D05DD56006BFB54 /* ProjectDetailSheet.swift */,
 			);
@@ -252,6 +255,7 @@
 				1D6058AD0D05DD56006BFB54 /* LaunchScreenView.swift in Sources */,
 				1D6058AE0D05DD56006BFB54 /* JacobGlatheWidget.swift in Sources */,
 				1D6058AF0D05DD56006BFB54 /* UssrEasterEggView.swift in Sources */,
+				1D6058B00D05DD56006BFB54 /* SafeImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

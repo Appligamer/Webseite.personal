@@ -11,28 +11,26 @@ public struct HeroSectionView: View {
 
     public var body: some View {
         VStack(alignment: .leading, spacing: 28) {
-            // Kicker
+            // Top Kicker (Zero-Pill: Clean Text mit Symbol)
             HStack(spacing: 8) {
                 Image(systemName: "cpu")
-                    .font(.system(size: 13, weight: .semibold))
+                    .font(.system(size: 13, weight: .bold))
                     .foregroundStyle(Color(red: 0.16, green: 0.59, blue: 1.0))
 
                 Text(LocalContentData.heroKicker.text(for: language))
-                    .font(.system(size: 13, weight: .semibold))
+                    .font(.system(size: 12, weight: .semibold))
                     .foregroundStyle(Color(red: 0.16, green: 0.59, blue: 1.0))
+                    .textCase(.uppercase)
+                    .tracking(1.2)
             }
 
-            // Massive Headlines
-            VStack(alignment: .leading, spacing: 8) {
+            // Massive Confident Headlines
+            VStack(alignment: .leading, spacing: 4) {
                 Text(LocalContentData.heroTitleLine1.text(for: language))
-                    .font(.system(size: 54, weight: .black, design: .default))
+                    .font(.system(size: 40, weight: .bold, design: .default))
                     .foregroundStyle(
                         LinearGradient(
-                            colors: [
-                                Color(red: 0.98, green: 0.98, blue: 0.99),
-                                Color(red: 0.85, green: 0.85, blue: 0.88),
-                                Color(red: 0.65, green: 0.65, blue: 0.70)
-                            ],
+                            colors: [.white, Color(red: 0.75, green: 0.75, blue: 0.8)],
                             startPoint: .top,
                             endPoint: .bottom
                         )
@@ -88,6 +86,33 @@ public struct HeroSectionView: View {
                     )
                 }
             }
+            .padding(.top, 4)
+
+            // Hero Hardware Engineering Lab Showcase with SafeImageView
+            ZStack(alignment: .bottomLeading) {
+                SafeImageView(name: "hero_hardware_lab", height: 260, cornerRadius: 24)
+                    .overlay(
+                        LinearGradient(
+                            colors: [Color.clear, Color.black.opacity(0.75)],
+                            startPoint: .center,
+                            endPoint: .bottom
+                        )
+                        .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+                    )
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 24, style: .continuous)
+                            .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                    )
+
+                Text("ESP32 Silicon · High-Frequency Synthesis · Linux Core")
+                    .font(.system(size: 11, weight: .medium, design: .monospaced))
+                    .foregroundStyle(Color.white.opacity(0.8))
+                    .padding(.horizontal, 14)
+                    .padding(.vertical, 8)
+                    .background(Color.black.opacity(0.65).background(.ultraThinMaterial))
+                    .clipShape(Capsule())
+                    .padding(16)
+            }
             .padding(.top, 8)
 
             // 4-Column KPI / Metrics Strip
@@ -112,7 +137,7 @@ public struct HeroSectionView: View {
                     )
                 }
             }
-            .padding(.top, 16)
+            .padding(.top, 8)
         }
         .padding(.top, 36)
         .padding(.bottom, 24)

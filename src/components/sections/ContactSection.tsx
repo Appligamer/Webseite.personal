@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { Mail, Copy, Check, ArrowUpRight, MessageSquare } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import { contentData } from '../../data/content';
-
 import { copyToClipboard } from '../../utils/clipboard';
+import { triggerHaptic, hapticSpring } from '../../utils/haptics';
 
 export const ContactSection: React.FC = () => {
   const { language } = useApp();
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
+    triggerHaptic('light');
     await copyToClipboard(contentData.contact.email);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -46,9 +48,10 @@ export const ContactSection: React.FC = () => {
               </div>
 
               <div className="flex items-center gap-2 shrink-0">
-                <button
+                <motion.button
+                  whileTap={hapticSpring.button}
                   onClick={handleCopy}
-                  className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-semibold bg-white/10 dark:bg-white/10 light:bg-black/10 hover:bg-white/15 dark:hover:bg-white/15 light:hover:bg-black/15 text-white dark:text-white light:text-black transition-colors"
+                  className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-semibold bg-white/10 dark:bg-white/10 light:bg-black/10 hover:bg-white/15 dark:hover:bg-white/15 light:hover:bg-black/15 text-white dark:text-white light:text-black transition-colors cursor-pointer"
                 >
                   {copied ? (
                     <>
@@ -61,22 +64,23 @@ export const ContactSection: React.FC = () => {
                       <span>{contentData.contact.copyEmail[language]}</span>
                     </>
                   )}
-                </button>
+                </motion.button>
 
-                <a
+                <motion.a
+                  whileTap={hapticSpring.button}
+                  onClick={() => triggerHaptic('medium')}
                   href={`mailto:${contentData.contact.email}?subject=Projektanfrage%20Jacob%20Glathe%20%26%20Team`}
-                  className="flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-xs font-semibold bg-[#0071e3] hover:bg-[#0077ed] text-white transition-all shadow-sm"
+                  className="flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-xs font-semibold bg-[#0071e3] hover:bg-[#0077ed] text-white transition-colors shadow-sm"
                 >
                   <span>{contentData.contact.sendEmail[language]}</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
-                </a>
+                </motion.a>
               </div>
             </div>
 
-            <div className="text-xs text-[#86868b] dark:text-[#86868b] light:text-[#6e6e73] font-medium flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#2997ff]" />
-              <span>{contentData.contact.availability[language]}</span>
-            </div>
+            <p className="text-xs text-[#86868b] dark:text-[#86868b] light:text-[#6e6e73]">
+              {contentData.contact.availability[language]}
+            </p>
           </div>
         </div>
       </div>

@@ -4,6 +4,8 @@ import { ArrowUpRight, Cpu, Layers } from 'lucide-react';
 import { Project } from '../../types';
 import { useApp } from '../../context/AppContext';
 
+import { triggerHaptic, hapticSpring } from '../../utils/haptics';
+
 interface BentoCardProps {
   project: Project;
   onSelect: (project: Project) => void;
@@ -14,6 +16,11 @@ export const BentoCard: React.FC<BentoCardProps> = ({ project, onSelect, index =
   const { language } = useApp();
   const [imageError, setImageError] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
+
+  const handleCardClick = () => {
+    triggerHaptic('light');
+    onSelect(project);
+  };
 
   return (
     <motion.div
@@ -30,14 +37,14 @@ export const BentoCard: React.FC<BentoCardProps> = ({ project, onSelect, index =
         scale: 1.01,
         transition: { duration: 0.22, ease: [0.16, 1, 0.3, 1] as const },
       }}
-      whileTap={{ scale: 0.99 }}
-      onClick={() => onSelect(project)}
+      whileTap={hapticSpring.card}
+      onClick={handleCardClick}
       role="button"
       tabIndex={0}
       onKeyDown={(e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
-          onSelect(project);
+          handleCardClick();
         }
       }}
       className={`group relative flex flex-col justify-between overflow-hidden rounded-[28px] text-left cursor-pointer
@@ -85,14 +92,8 @@ export const BentoCard: React.FC<BentoCardProps> = ({ project, onSelect, index =
             <img
               src={project.image}
               alt={project.imageAlt || project.title[language]}
-              referrerPolicy="no-referrer"
-              loading="lazy"
-              decoding="async"
-              onLoad={() => setImageLoaded(true)}
               onError={() => setImageError(true)}
-              className={`w-full h-full object-cover transition-opacity duration-300 ${
-                imageLoaded ? 'opacity-100' : 'opacity-0'
-              }`}
+              className="w-full h-full object-cover"
             />
             {/* Subtle scrim for optical depth */}
             <div className="absolute inset-0 bg-gradient-to-t from-[#121214]/70 via-transparent to-transparent pointer-events-none" />

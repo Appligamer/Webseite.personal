@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ShieldAlert, Award } from 'lucide-react';
+import { triggerHaptic, hapticSpring } from '../../utils/haptics';
 
 interface UssrEasterEggProps {
   isOpen: boolean;
@@ -10,13 +11,19 @@ interface UssrEasterEggProps {
 export const UssrEasterEgg: React.FC<UssrEasterEggProps> = ({ isOpen, onClose }) => {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
+      if (e && e.key === 'Escape') onClose();
     };
     if (isOpen) {
+      triggerHaptic('medium');
       window.addEventListener('keydown', handleKeyDown);
     }
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, onClose]);
+
+  const handleClose = () => {
+    triggerHaptic('light');
+    onClose();
+  };
 
   return (
     <AnimatePresence>
@@ -31,7 +38,7 @@ export const UssrEasterEgg: React.FC<UssrEasterEggProps> = ({ isOpen, onClose })
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={onClose}
+            onClick={handleClose}
             className="fixed inset-0 bg-black/85 backdrop-blur-md"
           />
 
@@ -44,13 +51,14 @@ export const UssrEasterEgg: React.FC<UssrEasterEggProps> = ({ isOpen, onClose })
             className="relative w-full max-w-lg rounded-[32px] bg-[#141416] border border-red-500/30 shadow-[0_0_80px_rgba(205,0,0,0.35)] overflow-hidden z-10 flex flex-col text-center"
           >
             {/* Top Close Button */}
-            <button
-              onClick={onClose}
-              className="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-black/50 hover:bg-black/80 flex items-center justify-center text-white/70 hover:text-white transition-colors"
+            <motion.button
+              whileTap={hapticSpring.iconButton}
+              onClick={handleClose}
+              className="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-black/50 hover:bg-black/80 flex items-center justify-center text-white/70 hover:text-white transition-colors cursor-pointer"
               aria-label="Schließen"
             >
               <X className="w-4 h-4" />
-            </button>
+            </motion.button>
 
             {/* Official Flag of the USSR (High-Quality SVG) */}
             <div className="relative w-full aspect-[2/1] bg-[#CD0000] flex items-center justify-center overflow-hidden shadow-inner">
@@ -133,12 +141,13 @@ export const UssrEasterEgg: React.FC<UssrEasterEggProps> = ({ isOpen, onClose })
                   <span>Held der Arbeit (Embedded Klasse 1)</span>
                 </div>
 
-                <button
-                  onClick={onClose}
-                  className="px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-500 active:scale-95 text-white text-xs font-semibold tracking-wide transition-all shadow-[0_0_20px_rgba(205,0,0,0.4)]"
+                <motion.button
+                  whileTap={hapticSpring.button}
+                  onClick={handleClose}
+                  className="px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-500 text-white text-xs font-semibold tracking-wide transition-colors shadow-[0_0_20px_rgba(205,0,0,0.4)] cursor-pointer"
                 >
                   Zurück zum Kapitalismus
-                </button>
+                </motion.button>
               </div>
             </div>
           </motion.div>
